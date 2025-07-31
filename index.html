@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroCity TBI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">NCTBI</div>
+        <div class="menu-btn">&#9776;</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Doctors</a></li>
+            <li><a href="#">Locations</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <video class="hero-bg-video" src="brain.mp4" autoplay muted loop playsinline></video>
+        <div class="hero-content">
+            <h1>Neuro City TBI</h1>
+            <h2><br>Neurology, Diagnostics & Cognitive Therapy</h2>
+            <p>Comprehensive, compassionate care for all your Neuro Care.</p>
+            <a href="#" class="cta-btn">Request Appointment</a>
+        </div>
+        <div class="hero-img" id="heroImg"></div>
+    </header>
+
+    <section class="services">
+        <h2>Our Services</h2>
+        <p class="services-info">Our team includes board-certified doctors dedicated to providing comprehensive neurological evaluations, advanced diagnostics, and personalized cognitive therapy.
+
+With two convenient locations in Broward and Miami, we’re here to support patients through every step of recovery using the latest in neuro-rehabilitative treatment and technology.</p>
+        <div class="service-cards">
+            <div class="service-card">
+                <div class="icon">pic</div>
+                <h3>Neurology</h3>
+                <p>Our board-certified neurologist brings exceptional expertise and compassionate care to the diagnosis and treatment of complex neurological conditions</p>
+            </div>
+            <div class="service-card">
+                <div class="icon">pic</div>
+                <h3>Diagnostics</h3>
+                <p>We offer comprehensive diagnostic testing—including cognitive assessments, EEG, EMG, MRI, and DTI—to ensure accurate evaluation and effective management of neurological conditions</p>
+            </div>
+            <div class="service-card">
+                <div class="icon">pic</div>
+                <h3>Cognitive Therapy</h3>
+                <p>Our state-of-the-art cognitive therapy program leverages evidence-based techniques and the latest neurorehabilitation tools to help patients improve memory, attention, and problem-solving skills.</p>
+            </div>
+        </div>
+    </section>
+    <!-- Add this after your current </section> for services, before the footer -->
+    <section class="therapy-section">
+        <h2>Therapy Programs</h2>
+        <div class="gallery-list-container">
+            <div class="carousel-gallery">
+                <button class="carousel-btn left" aria-label="Previous">&#8592;</button>
+                <div class="carousel-track">
+                    <img src="gallery1.jpg" alt="Gallery 1" class="carousel-img">
+                    <img src="gallery2.jpg" alt="Gallery 2" class="carousel-img">
+                    <img src="gallery3.jpg" alt="Gallery 3" class="carousel-img">
+                </div>
+                <button class="carousel-btn right" aria-label="Next">&#8594;</button>
+            </div>
+            <div class="therapy-cards-list">
+                <ul class="therapy-list">
+                    <li>Ocular Motor Exercise</li>
+                    <li>Vestibular Training</li>
+                    <li>Cognitive Stimulation</li>
+                    <li>3D Reaction Training</li>
+                    <li>SSP Integration</li>
+                    <li>Balance & Coordination</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div>© 2025 NeuroCity TBI. All rights reserved.</div>
+    </footer>
+
+    <!-- Place this at the end of your HTML file, before </body> -->
+    <script>
+    document.addEventListener('mousemove', function(e) {
+        const heroImg = document.getElementById('heroImg');
+        if (!heroImg) return;
+        const x = (e.clientX / window.innerWidth - 0.5) * 20; // range: -10 to 10
+        const y = (e.clientY / window.innerHeight - 0.5) * 20;
+        heroImg.style.transform = `translate(${x}px, ${y}px) scale(1.03)`;
+    });
+
+    const images = document.querySelectorAll('.carousel-img');
+    let current = 1; // Start with the center image
+
+    function updateCarousel() {
+        images.forEach((img, idx) => {
+            img.classList.toggle('active', idx === current);
+        });
+    }
+
+    document.querySelector('.carousel-btn.left').onclick = function() {
+        current = (current - 1 + images.length) % images.length;
+        updateCarousel();
+    };
+    document.querySelector('.carousel-btn.right').onclick = function() {
+        current = (current + 1) % images.length;
+        updateCarousel();
+    };
+
+    // Initialize
+    updateCarousel();
+    </script>
+</body>
+</html>
